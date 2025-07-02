@@ -1,6 +1,8 @@
+export type UseDirective = "client" | "server" | "default";
+
 export const getUseDirective = async (
   stream: ReadableStream<Uint8Array>,
-): Promise<"client" | "server" | "default"> => {
+): Promise<UseDirective> => {
   const reader = stream.getReader();
   const decoder = new TextDecoder("utf-8");
   const directives = {
